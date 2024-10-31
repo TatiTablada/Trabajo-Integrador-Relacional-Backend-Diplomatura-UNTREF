@@ -1,0 +1,51 @@
+# GET para obtener todo el contenido
+GET http://localhost:3006/api/contenidos
+
+###
+
+# GET para obtener un contenido por ID
+GET http://localhost:3006/api/contenido/2
+
+###
+
+# GET para filtrar contenido por título, genero o categoría
+GET http://localhost:3006/api/contenidos/filtrar?title=Riverdale
+
+###
+GET http://localhost:3006/api/contenidos/filtrar?category=Pelicula
+
+###
+GET http://localhost:3006/api/contenidos/filtrar?genre=Accion
+
+###
+POST http://localhost:3006/api/contenido
+Content-Type: application/json
+
+{
+     "titulo": "Una serie nueva", 
+     "resumen": "Es una serie nueva creada por Tatiana Tablada para el Trabajo Integrador Relacional Backend :)", 
+     "temporadas": 1, 
+     "poster": "./posters/99.jpg", 
+     "trailer": "https://www.youtube.com/embed/7VUTvR1DDoI",
+     "duracion": null, 
+     "categoria_id": 1, 
+     "genero_id": 12
+}
+
+###
+PUT http://localhost:3006/api/contenido/101
+Content-Type: application/json
+
+{
+    "titulo": "Una serie actualizada",
+    "resumen": "Resumen actualizado para el Trabajo Integrador Relacional Backend :)",
+    "temporadas": 2,
+    "poster": "./posters/99_updated.jpg",
+    "trailer": "https://www.youtube.com/embed/7VUTvR1DDoI",
+    "duracion": "45 min",
+    "reparto": [1, 2, 3]
+}
+
+
+###
+DELETE http://localhost:3006/api/contenido/101
