@@ -65,10 +65,10 @@ Utiliza una **I.A.** como sugerimos en clase para optimizar la inserción de los
 
 ## Fechas Importantes
 
-- **Avance del Proyecto**: 10 de octubre de 2024
+- **Avance del Proyecto**: 15 de octubre de 2024
   - Tener diseñadas las tablas en DB Designer, con el archivo SQL generado y los primeros endpoints funcionando.
 
-- **Presentación Final**: 24 de octubre de 2024
+- **Presentación Final**: 31 de octubre de 2024
   - Proyecto completo con CRUD y toda la documentación.
 
 ## Estructura del Repositorio
@@ -118,7 +118,6 @@ Utiliza una **I.A.** como sugerimos en clase para optimizar la inserción de los
 5. Agrega a los siguientes usuarios como colaboradores en tu repositorio:
    - [FabioDrizZt](https://github.com/FabioDrizZt)
    - [JuanNebbia](https://github.com/JuanNebbia)
-   - [NKrein](https://github.com/NKrein)
    - [mathiasbarbosa](https://github.com/mathiasbarbosa)
 
 ## Conclusión
