@@ -5,6 +5,24 @@ const { Op } = require('sequelize');
 const { sequelize } = require('../conexion/database.js');
 const { Contenido, Genero, Actor, Categoria } = require('../models');
 
+
+const getIncludeConfig = (genre, category) => [
+    {
+        model: Categoria,
+        as: 'categorias',
+        ...(category && { where: { nombre_categoria: category }, attributes: [] })
+    },
+    {
+        model: Genero,
+        as: 'generos',
+        ...(genre && { where: { nombre_genero: genre }, attributes: [] })
+    },
+    {
+        model: Actor,
+        as: 'actores'
+    }
+];
+
 // Routes for CRUD
 router.get('/', (req, res) => {
     res.send('¡Bienvenido a la API de Trailerflix!');
@@ -13,7 +31,7 @@ router.get('/', (req, res) => {
 router.get('/contenidos', async (req, res) => {
     try {
         const contenidos = await Contenido.findAll({
-            include: [Categoria, Genero, Actor]
+            include: getIncludeConfig()
         });
         res.json(contenidos);
     } catch (error) {
@@ -26,7 +44,7 @@ router.get('/contenido/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const contenido = await Contenido.findByPk(id, {
-            include: [Categoria, Genero, Actor]
+            include: getIncludeConfig()
         });
         if (!contenido) {
             return res.status(404).json({ error: 'Content not found' });
@@ -41,16 +59,18 @@ router.get('/contenido/:id', async (req, res) => {
 router.get('/contenidos/filtrar', async (req, res) => {
     const { title, genre, category } = req.query;
     const whereCondition = title ? { titulo: { [Op.like]: `%${title}%` } } : {};
-    const includeCondition = [
-        genre && { model: Genero, as: 'generos', where: { nombre_genero: genre }, attributes: [] },
-        category && { model: Categoria, as: 'categorias', where: { nombre_categoria: category }, attributes: [] }
-    ].filter(Boolean);
+    const includeConfig = getIncludeConfig(genre, category);
 
     try {
-        const contenidos = await Contenido.findAll({ where: whereCondition, include: includeCondition });
+        const contenidos = await Contenido.findAll({
+            where: whereCondition,
+            include: includeConfig
+        });
+
         if (!contenidos.length) {
             return res.status(404).json({ error: 'No hay contenido que coincida con la búsqueda' });
         }
+
         res.json(contenidos);
     } catch (error) {
         console.error('Error al filtrar contenidos:', error);
@@ -97,7 +117,7 @@ router.put('/contenido/:id', async (req, res) => {
                     actor_id: { [Op.in]: reparto }
                 }
             });
-            await contenido.addActors(actores);
+            await contenido.addActores(actores);
         }
 
         res.json(contenido);

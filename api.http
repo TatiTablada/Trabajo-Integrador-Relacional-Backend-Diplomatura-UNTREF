@@ -12,10 +12,10 @@ GET http://localhost:3006/api/contenido/2
 GET http://localhost:3006/api/contenidos/filtrar?title=Riverdale
 
 ###
-GET http://localhost:3006/api/contenidos/filtrar?category=Pelicula
+GET http://localhost:3006/api/contenidos/filtrar?category=Serie
 
 ###
-GET http://localhost:3006/api/contenidos/filtrar?genre=Accion
+GET http://localhost:3006/api/contenidos/filtrar?genre=Terror
 
 ###
 POST http://localhost:3006/api/contenido
@@ -33,7 +33,7 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:3006/api/contenido/101
+PUT http://localhost:3006/api/contenido/105
 Content-Type: application/json
 
 {
@@ -48,4 +48,4 @@ Content-Type: application/json
 
 
 ###
-DELETE http://localhost:3006/api/contenido/101
+DELETE http://localhost:3006/api/contenido/104
