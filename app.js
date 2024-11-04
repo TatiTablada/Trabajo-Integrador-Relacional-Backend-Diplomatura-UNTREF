@@ -3,15 +3,16 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const sequelize = require('./conexion/database.js');
 const app = express();
-const PORT = process.env.PORT || 3306;
+const PORT = process.env.PORT || 3006;
 const contenidoRoutes = require('./routes/contenidoRoutes.js');
-
-
+const setupSwagger = require('./swaggerConfig.js');
+setupSwagger(app);
 
 // Middlewares
 app.use(bodyParser.json());
 app.use(express.json());
-app.use('/api', contenidoRoutes);
+app.use('/api/contenidos', contenidoRoutes);
+
 
 sequelize.sync({ force: false }).then(() => {
   console.log("Base de datos y tablas creadas!");
@@ -20,5 +21,6 @@ sequelize.sync({ force: false }).then(() => {
 });
 // Server
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server corriendo en http://localhost:${PORT}`);
+  console.log(`Documentación de la API en:http://localhost:${PORT}/api-docs`);
 });
