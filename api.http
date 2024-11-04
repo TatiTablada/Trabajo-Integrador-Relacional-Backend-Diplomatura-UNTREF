@@ -4,7 +4,7 @@ GET http://localhost:3006/api/contenidos
 ###
 
 # GET para obtener un contenido por ID
-GET http://localhost:3006/api/contenido/2
+GET http://localhost:3006/api/contenido/5
 
 ###
 

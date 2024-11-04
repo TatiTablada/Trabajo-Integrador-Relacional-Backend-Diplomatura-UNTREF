@@ -1,7 +1,7 @@
 process.loadEnvFile()
 const express = require('express');
 const bodyParser = require('body-parser');
-const { sequelize } = require('./models');
+const sequelize = require('./conexion/database.js');
 const app = express();
 const PORT = process.env.PORT || 3306;
 const contenidoRoutes = require('./routes/contenidoRoutes.js');

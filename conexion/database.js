@@ -2,30 +2,22 @@ process.loadEnvFile()
 const { Sequelize } = require('sequelize')
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT } = process.env
 
-console.log(`DBUSER: ${DB_USER}, PASSWORD: ${DB_PASSWORD}, HOST: ${DB_HOST}, DATABASE: ${DB_NAME}`);
 
 const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
     host: DB_HOST,
     dialect: 'mysql',
-    logging: console.log,
     port: DB_PORT,
     dialectOptions: {
         connectTimeout: 60000
-    },
-    pool: {
-        max: 5,
-        min: 0,
-        acquire: 60000,
-        idle: 10000
-    },
+    }
 });
 
 sequelize.authenticate()
     .then(() => {
-        console.log('Connection has been established successfully.');
+        console.log('Conexión establecida con éxito.');
     })
     .catch(err => {
-        console.error('Unable to connect to the database:', err);
+        console.error('No se puede conecta a la BD porque:', err);
     });
 
 
