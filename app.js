@@ -11,7 +11,7 @@ setupSwagger(app);
 // Middlewares
 app.use(bodyParser.json());
 app.use(express.json());
-app.use('/api/contenidos', contenidoRoutes);
+app.use('/api', contenidoRoutes);
 
 
 sequelize.sync({ force: false }).then(() => {
@@ -22,5 +22,5 @@ sequelize.sync({ force: false }).then(() => {
 // Server
 app.listen(PORT, () => {
   console.log(`Server corriendo en http://localhost:${PORT}`);
-  console.log(`Documentación de la API en:http://localhost:${PORT}/api-docs`);
+  console.log(`Documentación en:http://localhost:${PORT}/api-docs`);
 });
