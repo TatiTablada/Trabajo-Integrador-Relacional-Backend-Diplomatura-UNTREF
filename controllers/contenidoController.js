@@ -87,7 +87,7 @@ const getContenidos = async (req, res) => {
         res.json(contenidos);
     } catch (error) {
         console.error('Error al obtener contenidos:', error);
-        res.status(500).json({ error: 'Database is unavailable', details: error.message });
+        res.status(500).json({ error: 'Database invalida', details: error.message });
     }
 };
 
@@ -122,12 +122,12 @@ const getContenidoById = async (req, res) => {
     try {
         const contenido = await Contenido.findByPk(id, { include: getIncludeConfig() });
         if (!contenido) {
-            return res.status(404).json({ error: 'Content not found' });
+            return res.status(404).json({ error: 'Contenido no encontrado' });
         }
         res.json(contenido);
     } catch (error) {
         console.error('Error al obtener el contenido:', error);
-        res.status(500).json({ error: 'Database is unavailable', details: error.message });
+        res.status(500).json({ error: 'Database invalida', details: error.message });
     }
 };
 
