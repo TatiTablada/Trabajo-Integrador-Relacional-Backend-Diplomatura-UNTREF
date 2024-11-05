@@ -4,8 +4,21 @@
 
 ## Descripción del Proyecto
 
-En este proyecto, desarrollé una plataforma de streaming utilizando Node.js y MySQL, con la finalidad de implementar un CRUD (Crear, Leer, Actualizar, Eliminar) en una base de datos relacional. La aplicación permite gestionar contenido de la plataforma (películas y series) tomando como referencia el archivo `trailerflix.json` para diseñar el modelo de datos.
+En este proyecto, creé una plataforma de streaming llamada TrailerFlix. La aplicación permite realizar operaciones CRUD sobre una base de datos en MySQL que almacena información sobre películas y series. Toda la estructura de datos se basó en un archivo JSON de referencia, trailerflix.json, que contiene detalles sobre cada contenido, desde el título hasta el reparto. Usé este archivo para diseñar un modelo de datos robusto que luego implementé en DB Designer y finalmente exporté a SQL para construir la base de datos en MySQL.
 
+Mi objetivo fue implementar una aplicación funcional con la capacidad de crear, leer, actualizar y eliminar registros en la base de datos, facilitando así la gestión de contenidos multimedia de una plataforma de streaming.
+
+## Caracteristicas
+
+Este proyecto incluye una serie de funcionalidades que cubren todas las operaciones necesarias para gestionar el contenido en una plataforma de streaming. Algunas de estas características incluyen:
+
+1. Lectura Completa de Contenidos: Proporciona un listado de todos los contenidos disponibles en la plataforma, utilizando un endpoint específico para obtener toda la información almacenada.
+2. Búsqueda por ID: Permite obtener detalles específicos de una película o serie mediante su ID.
+3. Filtrado Personalizado: La aplicación permite filtrar contenidos por atributos como título, género o categoría, lo que facilita la navegación entre el catálogo.
+4. Agregar Nuevos Contenidos: Permite agregar nuevos elementos a la base de datos, con validaciones para asegurar que se incluyan los campos necesarios.
+5. Actualización y Edición de Contenidos: Facilita la actualización de detalles como el reparto, número de temporadas o la sinopsis.
+6. Eliminación de Contenidos: Proporciona una forma segura de eliminar contenidos, con mensajes de error y respuestas específicas si algo falla en el proceso.
+7. Manejo de Errores: Los endpoints están diseñados para responder de forma adecuada a cada tipo de error, proporcionando mensajes claros y controlando posibles fallos en la conexión.
 
 ## Modelo de Base de Datos
 
@@ -20,36 +33,14 @@ Creé una base de datos llamada `trailerflix`, que incluye las siguientes tablas
 7. **contenido_categorias**: Tabla intermedia para relacionar contenido y sus categorias.
 
 
-## Funcionalidades del CRUD
+## Estructura del Proyecto
+Para facilitar el desarrollo y mantenimiento, dividí el proyecto en varias carpetas:
 
-1. **Obtener todos los contenidos**
-   - Desarrollé un endpoint para recuperar todos los contenidos de la base de datos.
-   - Agregué control de errores para manejar la indisponibilidad de la base de datos.
-
-2. **Obtener un contenido por ID**
-   - Creé un endpoint para recuperar un contenido específico por su ID.
-   - Implementé control de errores para manejar casos en que el contenido no exista.
-
-3. **Filtrar contenidos**
-   - Desarrollé un endpoint para filtrar por título, género o categoría.
-   - Agregué control de errores para manejar coincidencias no encontradas o problemas de conexión.
-
-4. **Agregar un nuevo contenido**
-   - Implementé un endpoint para añadir un nuevo contenido (película o serie).
-   - Incluí validación de campos obligatorios.
-
-5. **Actualizar un contenido**
-   - Creé un endpoint para actualizar información como temporadas o reparto.
-   - Agregué control de errores para manejar actualizaciones fallidas.
-
-6. **Eliminar un contenido**
-   - Implementé un endpoint para eliminar un contenido de la base de datos.
-   - Incluí control de errores para manejar problemas durante el borrado.
-
-7. **Control de errores general**
-   - Manejé los errores en la estructura de solicitudes y respuestas.
-   - Configuré respuestas con mensajes y códigos de error específicos.
-   - Gestioné las rutas inexistentes con respuestas adecuadas.
+- /json: Contiene el archivo trailerflix.json con los datos de películas y series, que usé para diseñar las tablas de la base de datos.
+- /conexion/database.js: Archivo que configura la conexión a la base de datos MySQL.
+- /models: Contiene los modelos de datos para cada tabla en la base de datos.
+- /controllers: Define la lógica para cada endpoint del CRUD.
+- /routes: Contiene las rutas para cada función CRUD, vinculadas a los controladores correspondientes.
 
 ## Tecnologías Utilizadas
    - **Node.js**: Utilizado como entorno de ejecución de JavaScript en el servidor.
@@ -59,20 +50,38 @@ Creé una base de datos llamada `trailerflix`, que incluye las siguientes tablas
    - **Postman**: Utilizado para probar los endpoints del CRUD y verificar el funcionamiento de las rutas.
    - **Inteligencia Artificial**: Asistió en la transformación y optimización de los datos en trailerflix.json para su inserción en MySQL.
 
-   ## Pruebas
-   Para probar la funcionalidad de la aplicación, utilicé Postman y desarrollé una serie de pruebas de integración que abarcan:
+## Pruebas
+Para probar la funcionalidad de la aplicación, utilicé Postman y desarrollé una serie de pruebas de integración que abarcan:
 
-   - Pruebas de Creación: Verificar la correcta inserción de nuevos contenidos en la base de datos.
-   - Pruebas de Lectura: Comprobar que los contenidos existentes se obtienen de manera precisa.
-   - Pruebas de Actualización: Evaluar que las modificaciones de datos (por ejemplo, temporadas y reparto) se realizan sin problemas.
-   - Pruebas de Eliminación: Asegurar que el contenido seleccionado se elimina correctamente y no produce errores.
+- Pruebas de Creación: Verificar la correcta inserción de nuevos contenidos en la base de datos.
+- Pruebas de Lectura: Comprobar que los contenidos existentes se obtienen de manera precisa.
+- Pruebas de Actualización: Evaluar que las modificaciones de datos (por ejemplo, temporadas y reparto) se realizan sin problemas.
+- Pruebas de Eliminación: Asegurar que el contenido seleccionado se elimina correctamente y no produce errores.
 
-   ## Recursos y Referencias
-   - Documentación de Node.js.
-   - Documentación de Express.
-   - Documentación de MySQL.
-   - DB Designer para el diseño visual de la base de datos.
-   - Postman para pruebas de endpoints y desarrollo de APIs.
 
-   ## Documentación hecha con Swagger
-   Por ultimo realicé una documentación con Swagger que muestra las peticiones HTTP de la API Trailerflix.
+## Documentación hecha con Swagger
+Por ultimo realicé una documentación con Swagger que muestra las peticiones HTTP de la API Trailerflix.
+
+
+## Retos y Aprendizajes
+Este proyecto fue una excelente oportunidad para profundizar en el desarrollo backend con Node.js y MySQL. El diseño de la base de datos basado en un archivo JSON fue       
+desafiante, ya que requería un enfoque cuidadoso para definir relaciones entre tablas y optimizar el modelo. Además, fue fundamental el manejo adecuado de errores y la 
+validación de entradas en cada endpoint.
+
+## Futuras Mejoras
+Si continuara desarrollando esta plataforma, algunas ideas para mejorar serían:
+
+Autenticación y Autorización: Añadir autenticación para los usuarios y definir niveles de acceso.
+Pagos y Suscripciones: Incorporar un sistema de gestión de suscripciones para ofrecer acceso a contenido premium.
+Optimización de Consultas: Refinar las consultas SQL para mejorar el rendimiento en grandes volúmenes de datos.
+
+## Recursos y Referencias
+- Documentación de Node.js.
+- Documentación de Express.
+- Documentación de MySQL.
+- DB Designer para el diseño visual de la base de datos.
+- Postman para pruebas de endpoints y desarrollo de APIs.
+
+## Agradecimientos
+Gracias a los instructores y los conocimientos compartidos durante el desarrollo de este proyecto. También, agradezco el uso de herramientas como DB Designer y Postman, que simplificaron la visualización del modelo de datos y la prueba de los endpoints respectivamente.
+
