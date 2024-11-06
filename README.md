@@ -83,5 +83,5 @@ Optimización de Consultas: Refinar las consultas SQL para mejorar el rendimient
 - Postman para pruebas de endpoints y desarrollo de APIs.
 
 ## Agradecimientos
-Gracias a los instructores y los conocimientos compartidos durante el desarrollo de este proyecto. También, agradezco el uso de herramientas como DB Designer y Postman, que simplificaron la visualización del modelo de datos y la prueba de los endpoints respectivamente.
+Gracias a los instructores por los conocimientos compartidos durante el desarrollo de este proyecto. También, agradezco el uso de herramientas como DB Designer y Postman, que simplificaron la visualización del modelo de datos y la prueba de los endpoints respectivamente.
 
